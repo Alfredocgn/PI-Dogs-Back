@@ -54,7 +54,7 @@ const getAllDogs = async () =>{
     // console.log(infoTotal)
 }
 
-getAllDogs()
+// getAllDogs()
 
 router.get('/dogs',async (req,res)=>{
     const {name} = req.query;
@@ -68,6 +68,71 @@ router.get('/dogs',async (req,res)=>{
         res.status(200).send(totalDogs)
     }
 })
+
+router.post('/dogs', async (req,res)=>{
+    const {
+        name,
+        id,
+        height,
+        weight,
+        bred,
+        breedGroup,
+        lifeSpan,
+        origin,
+        img,
+        createInDb,
+        temperament,
+    } = req.body;
+
+    const dogCreated = await Dog.create({
+        name,
+        height,
+        weight,
+        bred,
+        breedGroup,
+        lifeSpan,
+        origin,
+        img,
+        createInDb,
+        id
+    })
+
+    const temperamentDb = await Temperament.findAll({
+        where:{
+            name: temperament
+        }
+    })
+    dogCreated.addTemperament(temperamentDb)
+    res.send('Personaje creado con exito')
+})
+
+router.get('/temperaments', async(req,res)=>{
+    const temperamentsApi = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`);
+    // console.log(temperamentsApi)
+    const temperaments = temperamentsApi.data.map(el => el.temperament);
+    // console.log(temperaments)
+    temperaments.forEach(el => {
+        Temperament.findOrCreate({
+            where: {name : el}
+        })
+        
+    })
+
+    
+})
+
+router.get('/dogs/:id', async (req,res)=>{
+    const {id} = req.params;
+    const totalDogs = await getAllDogs()
+    if(id){
+        let dogsId = await totalDogs.filter(el => el.id === id)
+        dogsId.length ?
+        res.status(200).json(dogsId):
+        res.status(404).send('No encontre a ese dog')
+    }
+})
+
+
 
 
 module.exports = router,getAllDogs;
