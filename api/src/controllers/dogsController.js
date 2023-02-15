@@ -16,19 +16,17 @@ const cleanDogsApi =  (arr) =>{
             lifeSpan:el.life_span,
             img: el.image,
             created: false,
+            temp: el.temperament
 
         }
     })
     
 }
 
-// AGREGAR TEMPERAMENT AL CREAR
+
 const createDog = async (name,height,weight,lifeSpan,temperaments) =>{
     const newDog = await Dog.create({name,height,weight,lifeSpan,temperaments})
     // return newDog;
-
-
-    // console.log(temperamentsById)
 
     const filteredDog = await newDog.addTemperament(temperaments)
 
@@ -44,25 +42,17 @@ const getDogbyRaceId = async (id,source)=>{
         const cleanData = cleanDogsApi([apiDogsRaw]);
         return cleanData;
     }else{
-        await Dog.findByPk(id,{
+        return await Dog.findByPk(id,{
             include:{
                 model:Temperament
             }
         })
+        
 
     }
-    // const dog = source === 'api' ?
-    // (await axios.get(`https://api.thedogapi.com/v1/breeds/${id}`)).data
-    // // console.log(apiUrl)
-    // : await Dog.findByPk(id,{
-    //     include:{
-    //         model:Temperament
-    //     }
-    // });
 
-    // return dog
 }
-//REVISAR TEMPERAMENTS 
+
 
 const getAllDogs = async () =>{
     const dbDogs = await Dog.findAll();
@@ -71,17 +61,6 @@ const getAllDogs = async () =>{
 
     const apiDogs = cleanDogsApi(apiDogsRaw)
 
-    // const apiDogs = apiDogsRaw.map((el) => {
-    //     return {
-    //         id: el.id,
-    //         name:el.name,
-    //         height:el.height.metric,
-    //         weight: el.weight.metric,
-    //         lifeSpan:el.life_span,
-    //         img: el.image.url,
-    //         created: false,
-
-    //     }} )
     // console.log(apiDogs)
 
     const results = [...dbDogs,...apiDogs];
@@ -100,23 +79,26 @@ const searchDogByName = async (name) => {
     })
 
     const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)).data;
-    const apiDogs = apiDogsRaw.map((el) => {
-        return {
-            id: el.id,
-            name:el.name,
-            height:el.height.metric,
-            weight: el.weight.metric,
-            lifeSpan:el.life_span,
-            img: el.image.url,
-            created: false,
+const apiDogs = cleanDogsApi(apiDogsRaw)
 
-        }} )
+    // const apiDogs = apiDogsRaw.map((el) => {
+    //     return {
+    //         id: el.id,
+    //         name:el.name,
+    //         height:el.height.metric,
+    //         weight: el.weight.metric,
+    //         lifeSpan:el.life_span,
+    //         img: el.image.url,
+    //         created: false,
+
+    //     }} )
 
     const filteredDogs = apiDogs.filter(dog => dog.name === name)
     result = [...filteredDogs,...dbDogs]
     if(result.length === 0){
         throw new Error ("El perro buscado no existe")
     }
+
     return[...filteredDogs,...dbDogs]
 
 

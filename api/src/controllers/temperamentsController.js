@@ -2,7 +2,6 @@ const {Temperament} = require('../db');
 const axios = require('axios')
 const {YOUR_API_KEY} = process.env;
 
-//FALTA RUTA TEMPERAMENTS
 const getTemp = async () =>{    
 const getTemperamentsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)).data
 // console.log(getTemperamentsRaw)
@@ -29,10 +28,5 @@ resultTemperaments.forEach( async (temp) => {
     
 });
 }
-
-
-
-
-
 
 module.exports ={getTemp};

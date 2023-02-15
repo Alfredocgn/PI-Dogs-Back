@@ -20,12 +20,13 @@ const router = Router();
 // router.use('/dogs',dogsRouter);
 // router.use('/temperaments',temperamentRouter)
 
-
+//DOGS ROUTES
 router.get('/dogs',getDogsHandler)
 router.get('/dogs/:id', getDogByRaceIdHandler)
 router.post('/dogs', createDogHandler)
 
 
+//TEMPERAMENT ROUTES 
 router.get('/temperaments',getTemperamentsHandler)
 
 module.exports = router;
