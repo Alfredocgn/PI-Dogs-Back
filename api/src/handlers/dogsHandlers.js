@@ -34,7 +34,9 @@ const getDogByRaceIdHandler = async (req,res) =>{
 
 const createDogHandler = async (req,res) =>{
     const{name,height,weight,lifeSpan,temperaments} = req.body;
+    
     try {
+        if(!name||!height||!weight||!lifeSpan||!temperaments) throw Error ("Missing data")
         const newDog = await createDog(name,height,weight,lifeSpan,temperaments);
         res.status(201).json(newDog)
 
