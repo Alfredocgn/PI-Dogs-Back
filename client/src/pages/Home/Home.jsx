@@ -2,6 +2,7 @@ import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getDogs} from "../../redux/actions";
+import DefaultLayout from "../../components/DefaultLayout/DefaultLayout";
 
 const Home = ()=>{
     //1) que se monte, hacer dispatch 
@@ -16,10 +17,11 @@ const Home = ()=>{
 
 
     return(
-        <>
-        <h1> Esta es la vista Home</h1>
-        <CardsContainer/>
-        </>
+        <DefaultLayout>
+            <h1> Esta es la vista Home</h1>
+            <CardsContainer/>
+        </DefaultLayout>
+        
     )
 }
 

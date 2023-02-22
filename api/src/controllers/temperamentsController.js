@@ -20,7 +20,7 @@ const finalTemperaments = getTemperaments.reduce((prev,actual)=>{
 const cleanTemperaments = new Set(finalTemperaments);
 console.log
 const resultTemperaments = [...cleanTemperaments];
-console.log(resultTemperaments);
+// console.log(resultTemperaments);
 
 resultTemperaments.forEach( async (temp) => { 
     await Temperament.create({

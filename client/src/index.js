@@ -7,14 +7,14 @@ import {Provider} from 'react-redux'
 import store from './redux/store';
 
 
-const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(
+ReactDOM.render(
   <Provider store={store}>
       <BrowserRouter>
         <React.StrictMode>
           <App />
         </React.StrictMode> 
       </BrowserRouter>
-  </Provider>
+  </Provider>,
+  document.getElementById("root")
   
 );

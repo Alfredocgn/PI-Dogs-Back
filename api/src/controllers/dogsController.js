@@ -37,10 +37,11 @@ const createDog = async (name,height,weight,lifeSpan,temperaments) =>{
 
 const getDogbyRaceId = async (id,source)=>{
     if(source === 'api'){
-        const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds/${id}`)).data;
+        const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds/${id}?api_key=${YOUR_API_KEY}`)).data;
         console.log(apiDogsRaw)
-        const cleanData = cleanDogsApi([apiDogsRaw]);
-        return cleanData;
+        // const cleanData = cleanDogsApi([apiDogsRaw]);
+        // return cleanData;
+        return apiDogsRaw
     }else{
         return await Dog.findByPk(id,{
             include:{
@@ -61,7 +62,7 @@ const getAllDogs = async () =>{
 
     const apiDogs = cleanDogsApi(apiDogsRaw)
 
-    // console.log(apiDogs)
+    console.log(apiDogs)
 
     const results = [...dbDogs,...apiDogs];
     if(results.length === 0){

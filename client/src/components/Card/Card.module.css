@@ -1,6 +1,16 @@
 .card{
     border-radius: 15px;
-    height: fit-content;
-    width: fit-content;
+    height:20em;
+    width: 20em;
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.cardImage{
+    width: 7em;
+    height: 7em;
+
 }
