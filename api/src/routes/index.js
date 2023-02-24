@@ -1,9 +1,7 @@
 const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
-const {YOUR_API_KEY} = process.env;
-const axios = require('axios');
-const {Dog , Temperament} = require('../db');
+
 const {createDogHandler,getDogsHandler,getDogByRaceIdHandler} = require('../handlers/dogsHandlers')
 const{getTemperamentsHandler} = require('../handlers/temperamentsHandlers')
 

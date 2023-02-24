@@ -10,13 +10,15 @@ const axios = require('axios')
 
 const Form = ()=>{
     const dispatch = useDispatch();
+
     useEffect(()=>{
         dispatch(getTemperaments());
     },[dispatch])
+    const temperaments = useSelector((state)=>state.temperaments)
     
 
-    const temperaments = useSelector((state)=>state.temperaments)
-    // console.log (temperaments)
+
+    console.log (temperaments)
     const [form,setForm] = useState({
         name:"",
         height:"",
@@ -25,22 +27,21 @@ const Form = ()=>{
         temperaments:""
     })
 
-    // const [error,setError] = useState({
-    //     name:"",
-    //     height:"",
-    //     weight:"",
-    //     lifeSpan:"",
+    const [error,setError] = useState({
+        name:"",
+        height:"",
+        weight:"",
+        lifeSpan:"",
 
-    // })
+    })
 
-    // const validate = (form) =>{
-    //     const nameRegExp = "\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/"
-    //     if(nameRegExp.test(form.name)){
-    //         setError({...errors,name:""})
-    //     }else{
-    //         setError({...errors,name:"Formato de nombre invalido"})
-    //     }if(form.name === ""){setError({error,name:"Campo vacio"})}
-            // }
+    const validate = (form) =>{
+        if(/^[A-Za-z]+$/.test(form.name)){
+            setError({...error,name:""})
+        }else{
+            setError({...error,name:"Formato de nombre invalido"})
+        }if(form.name === ""){setError({error,name:"Campo vacio"})}
+            }
 
     const changeHandler = (e) =>{
         const prop = e.target.name;
@@ -48,7 +49,7 @@ const Form = ()=>{
         // console.log(prop)
         // console.log(value)
 
-        // validate({...form,[prop]:value});
+        validate({...form,[prop]:value});
         setForm({...form,[prop]:value});
         // console.log(form)
 
@@ -67,7 +68,7 @@ const Form = ()=>{
                 <div>
                     <label>Name: </label>
                     <input type="text" value={form.name} onChange={changeHandler} name="name"  />
-                    {/* {error.name && <span>{error.name}</span>} */}
+                    {error.name && <span>{error.name}</span>}
                 </div>
                 <div>
                     <label>Height: </label>
@@ -84,7 +85,7 @@ const Form = ()=>{
                 <div>
                     <label>Temperaments: </label>
                     <select name="temperaments" id="temps" multiple>
-                        <option>{temperaments}</option>
+                        
                         <option>Temp 2</option>
                         <option>Temp 3</option>
                         <option>Temp 4</option>

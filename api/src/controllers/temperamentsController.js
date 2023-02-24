@@ -18,17 +18,17 @@ const finalTemperaments = getTemperaments.reduce((prev,actual)=>{
 // console.log(finalTemperaments)
 
 const cleanTemperaments = new Set(finalTemperaments);
-console.log
-const resultTemperaments = [...cleanTemperaments];
-// console.log(resultTemperaments);
 
-resultTemperaments.forEach( async (temp) => { 
+const resultTemperaments = [...cleanTemperaments];
+console.log(resultTemperaments);
+
+return( resultTemperaments.forEach( async (temp) => { 
     await Temperament.create({
         name : temp,
     }
 )
-    
-});
+
+}));
 }
 
 module.exports ={getTemp};
