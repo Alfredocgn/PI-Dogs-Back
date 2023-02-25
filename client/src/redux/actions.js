@@ -4,6 +4,7 @@
 export const GET_DOGS = "GET_DOGS";
 export const GET_DOG = "GET_DOG";
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS";
+export const FILTER_BY_CREATED = 'FILTER_BY_CREATED';
 
 
 export const getDogs = () =>{
@@ -33,4 +34,12 @@ export const getTemperaments = ()=>{
 
         dispatch({type: GET_TEMPERAMENTS ,payload:temperaments });
     }
+}
+
+export const filterDogsByCreated = (payload) =>{
+    return {
+        type: FILTER_BY_CREATED,
+        payload
+    }
+    
 }

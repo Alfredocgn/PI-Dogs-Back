@@ -2,6 +2,7 @@ import {  useEffect, useState } from "react";
 import {  useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../../components/DefaultLayout/DefaultLayout";
 import { getTemperaments } from "../../redux/actions";
+import validate from "../../components/Validator/validate";
 
 import style from "./Form.module.css"
 const axios = require('axios')
@@ -35,21 +36,13 @@ const Form = ()=>{
 
     })
 
-    const validate = (form) =>{
-        if(/^[A-Za-z]+$/.test(form.name)){
-            setError({...error,name:""})
-        }else{
-            setError({...error,name:"Formato de nombre invalido"})
-        }if(form.name === ""){setError({error,name:"Campo vacio"})}
-            }
-
     const changeHandler = (e) =>{
         const prop = e.target.name;
         const value = e.target.value;
         // console.log(prop)
         // console.log(value)
 
-        validate({...form,[prop]:value});
+        validate({...form,[prop]:value},error,setError);
         setForm({...form,[prop]:value});
         // console.log(form)
 
