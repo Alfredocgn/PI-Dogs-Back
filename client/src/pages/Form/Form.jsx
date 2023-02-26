@@ -3,9 +3,11 @@ import {  useDispatch, useSelector } from "react-redux";
 import DefaultLayout from "../../components/DefaultLayout/DefaultLayout";
 import { getTemperaments } from "../../redux/actions";
 import validate from "../../components/Validator/validate";
+import Input from "../../components/Input/Input"
+import Temperaments from "../../components/Temperaments/Temperaments";
 
 import style from "./Form.module.css"
-const axios = require('axios')
+import axios from "axios";
 
 
 
@@ -15,11 +17,11 @@ const Form = ()=>{
     useEffect(()=>{
         dispatch(getTemperaments());
     },[dispatch])
-    const temperaments = useSelector((state)=>state.temperaments)
+
     
 
 
-    console.log (temperaments)
+
     const [form,setForm] = useState({
         name:"",
         height:"",
@@ -39,12 +41,11 @@ const Form = ()=>{
     const changeHandler = (e) =>{
         const prop = e.target.name;
         const value = e.target.value;
-        // console.log(prop)
-        // console.log(value)
+
 
         validate({...form,[prop]:value},error,setError);
         setForm({...form,[prop]:value});
-        // console.log(form)
+
 
 
 
@@ -52,38 +53,50 @@ const Form = ()=>{
 
     const submitHandler= ((e) => {
         e.preventDefault()
-        axios.post("http://localhost:3001/dogs",form).then(res=>alert(res)).catch(err=>alert(err))
+        axios
+        .post("http://localhost:3001/dogs",form)
+        .then(res=>alert(res))
+        .catch(err=>alert(err))
     })
 
     return (
         <DefaultLayout>
             <form className={style.Form} onSubmit={submitHandler}>
-                <div>
-                    <label>Name: </label>
-                    <input type="text" value={form.name} onChange={changeHandler} name="name"  />
-                    {error.name && <span>{error.name}</span>}
-                </div>
-                <div>
-                    <label>Height: </label>
-                    <input type="text" value={form.height} onChange={changeHandler} name="height" />
-                </div>
-                <div>
-                    <label>Weight: </label>
-                    <input type="text" value={form.weight} onChange={changeHandler} name="weight"/>
-                </div>
-                <div>
-                    <label>Life Span: </label>
-                    <input type="text" value={form.lifeSpan} onChange={changeHandler} name="lifeSpan"/>
-                </div>
+                <Input
+                name="name"
+                label="Name: "
+                value = {form.name}
+                onChange = {changeHandler}
+                error={error.name}
+                type="text"/>
+
+                <Input
+                name="weight"
+                label="Weight: "
+                value = {form.weight}
+                onChange = {changeHandler}
+                error={error.weight}
+                type="number"/>
+
+                <Input
+                name="height"
+                label="Height: "
+                value = {form.height}
+                onChange = {changeHandler}
+                error={error.height}
+                type="number"/>
+
+                <Input
+                name="lifeSpan"
+                label="LifeSpan: "
+                value = {form.lifeSpan}
+                onChange = {changeHandler}
+                error={error.lifeSpan}
+                type="number"/>
+
                 <div>
                     <label>Temperaments: </label>
-                    <select name="temperaments" id="temps" multiple>
-                        
-                        <option>Temp 2</option>
-                        <option>Temp 3</option>
-                        <option>Temp 4</option>
-                        <option>Temp 5</option>
-                    </select>
+                    <Temperaments setForm={setForm} />
                 </div>
                 <button type="submit">Create</button>
 

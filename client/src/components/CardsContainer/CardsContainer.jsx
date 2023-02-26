@@ -10,12 +10,13 @@ const CardsContainer = () =>{
 
     const dogs = useSelector((state) => state.dogs)
     // console.log(dogs)
-
+    const [condition,setCondition] = useState("algo")
+    const filteredDogs = dogs.filter((dog)=> condition && dog);
     const [currentPage,setCurrentPage] = useState(1);
-    const [dogsPerPage,setDogPerPage]= useState(8);
+    const dogsPerPage = 8;
     const indexOfLastDog = currentPage * dogsPerPage;
     const indexOfFirstDog = indexOfLastDog - dogsPerPage;
-    const currentDogs = dogs.slice(indexOfFirstDog,indexOfLastDog);
+    const currentDogs = filteredDogs.slice(indexOfFirstDog,indexOfLastDog);
         
     const paging = (pageNumber)=>{
             setCurrentPage(pageNumber)

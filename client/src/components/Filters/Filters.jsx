@@ -6,7 +6,6 @@ const  Filters = () =>{
     const dispatch = useDispatch()
 
     function handleFilterCreated(e){
-        console.log(e)
         dispatch(filterDogsByCreated(e.target.value))
 
     }

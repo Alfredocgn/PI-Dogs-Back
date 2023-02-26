@@ -38,9 +38,7 @@ const createDog = async (name,height,weight,lifeSpan,temperaments) =>{
 const getDogbyRaceId = async (id,source)=>{
     if(source === 'api'){
         const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds/${id}?api_key=${YOUR_API_KEY}`)).data;
-        console.log(apiDogsRaw)
-        // const cleanData = cleanDogsApi([apiDogsRaw]);
-        // return cleanData;
+
         return apiDogsRaw
     }else{
         return await Dog.findByPk(id,{
@@ -58,11 +56,11 @@ const getDogbyRaceId = async (id,source)=>{
 const getAllDogs = async () =>{
     const dbDogs = await Dog.findAll();
     const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)).data;
-    // console.log(apiDogsRaw)
+
 
     const apiDogs = cleanDogsApi(apiDogsRaw)
 
-    console.log(apiDogs)
+
 
     const results = [...dbDogs,...apiDogs];
     if(results.length === 0){
@@ -82,17 +80,6 @@ const searchDogByName = async (name) => {
     const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)).data;
 const apiDogs = cleanDogsApi(apiDogsRaw)
 
-    // const apiDogs = apiDogsRaw.map((el) => {
-    //     return {
-    //         id: el.id,
-    //         name:el.name,
-    //         height:el.height.metric,
-    //         weight: el.weight.metric,
-    //         lifeSpan:el.life_span,
-    //         img: el.image.url,
-    //         created: false,
-
-    //     }} )
 
     const filteredDogs = apiDogs.filter(dog => dog.name === name)
     result = [...filteredDogs,...dbDogs]

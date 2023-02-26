@@ -15,7 +15,7 @@ export default function SetPages (dogsPerPage,dogs,paging){
                     return(
                     <li> 
                         HOLA                       
-                        <a onClick={()=> paging(number)}>{number}hola</a>
+                        <button onClick={()=> paging(number)}>{number}hola</button>
                         
                     </li>)
 

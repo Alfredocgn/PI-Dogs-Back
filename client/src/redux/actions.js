@@ -29,8 +29,7 @@ export const getDog = (id) =>{
 export const getTemperaments = ()=>{
     return async function (dispatch){
         const apiData =  await fetch(`http://localhost:3001/temperaments`);
-        const temperaments = apiData;
-        console.log(temperaments)
+        const temperaments = await apiData.json();
 
         dispatch({type: GET_TEMPERAMENTS ,payload:temperaments });
     }

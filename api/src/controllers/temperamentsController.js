@@ -4,9 +4,9 @@ const {YOUR_API_KEY} = process.env;
 
 const getTemp = async () =>{    
 const getTemperamentsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)).data
-// console.log(getTemperamentsRaw)
+
 const getTemperaments = getTemperamentsRaw.map(el => el.temperament)
-// console.log(getTemperaments)
+
 
 
 const finalTemperaments = getTemperaments.reduce((prev,actual)=>{
@@ -15,20 +15,19 @@ const finalTemperaments = getTemperaments.reduce((prev,actual)=>{
     return prev
 },[])
 
-// console.log(finalTemperaments)
+
 
 const cleanTemperaments = new Set(finalTemperaments);
 
-const resultTemperaments = [...cleanTemperaments];
-console.log(resultTemperaments);
+const resultTemperaments = [...cleanTemperaments].map((temperament)=>({
+    name: temperament,
+}))
 
-return( resultTemperaments.forEach( async (temp) => { 
-    await Temperament.create({
-        name : temp,
-    }
-)
 
-}));
+const temperaments = await Temperament.bulkCreate(resultTemperaments,{
+    returning:true,
+})
+return temperaments;
 }
 
 module.exports ={getTemp};
