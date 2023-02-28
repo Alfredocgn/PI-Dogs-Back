@@ -1,0 +1,29 @@
+.CarouselImg{
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+}
+.CarouselButtonContainer{
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.CarouselButton{
+    color: white;
+    background-color: #005f6b;
+    padding: 0.5em;
+    margin: 0 0.5em;
+    border: solid black;
+
+}
+
+.CarouselContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+

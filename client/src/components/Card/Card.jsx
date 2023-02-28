@@ -6,9 +6,9 @@ const Card = ({img,name,weight,temperament,id})=>{
     return(
         <Link to={url}>
             <div className={style.card}>
-                <p>Name:{name}</p>
-                <p>Weight:{weight}</p>
-                <p>Temperament:{temperament}</p>
+                <p className={style.cardInfo}>Name: {name}</p>                
+                <p className={style.cardInfo}>Weight: {weight} Kg</p>
+                <p className={style.cardInfo}>Temperament: {temperament}</p>
                 <img src={img} alt="imgDog" className={style.cardImage} />
             </div>
         </Link>

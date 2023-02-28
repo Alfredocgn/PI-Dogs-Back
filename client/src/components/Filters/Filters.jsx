@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux";
 import { filterDogsByCreated } from "../../redux/actions";
+import style from "./Filters.module.css"
+
 
 
 const  Filters = () =>{
@@ -11,7 +13,7 @@ const  Filters = () =>{
     }
 
     return(
-        <div>
+        <div className={style.filters}>
             <select onChange={e => handleFilterCreated(e)}>
                 <option value="All">All</option>
                 <option value="true">Created</option>
