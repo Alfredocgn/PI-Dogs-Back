@@ -21,7 +21,7 @@ const Detail = ()=>{
         <DefaultLayout>
             <div className={style.Detail}>
 
-                        <CardDetail
+                        <CardDetail 
                         key={dog.id}
                         name={dog.name}
                         weight ={dog.weight}

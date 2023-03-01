@@ -4,7 +4,7 @@ import style from "./Card.module.css"
 const Card = ({img,name,weight,temperament,id})=>{
     const url = `/detail/${id}`
     return(
-        <Link to={url}>
+        <Link className = {style.containerCard} to={url}>
             <div className={style.card}>
                 <p className={style.cardInfo}>Name: {name}</p>                
                 <p className={style.cardInfo}>Weight: {weight} Kg</p>

@@ -10,8 +10,8 @@ const CardsContainer = () =>{
 
     const dogs = useSelector((state) => state.dogs)
     // console.log(dogs)
-    const [condition,setCondition] = useState("algo")
-    const filteredDogs = dogs.filter((dog)=> condition && dog);
+    // const [condition,setCondition] = useState("algo")
+    const filteredDogs = dogs.filter((dog)=>  dog);
     const [currentPage,setCurrentPage] = useState(1);
     const dogsPerPage = 8;
     const indexOfLastDog = currentPage * dogsPerPage;
@@ -39,8 +39,9 @@ const CardsContainer = () =>{
                     return (<Card
                         key ={dog.id}
                         name={dog.name}
-                        weight={dog.weight.metric}
+                        weight={dog.weight}
                         temperament={dog.temp}
+                        height={dog.height}
                         id ={dog.id}
                         img={dog.img ? dog.img.url : "No image"}
                     />);

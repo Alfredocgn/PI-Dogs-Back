@@ -1,6 +1,5 @@
 const {Dog,Temperament} = require('../db');
 const axios = require('axios');
-const { get } = require('../routes');
 const db = require('../db');
 const {YOUR_API_KEY} = process.env;
 
@@ -11,8 +10,8 @@ const cleanDogsApi =  (arr) =>{
         return {
             id: el.id,
             name:el.name,
-            height:el.height,
-            weight: el.weight,
+            height:el.height.metric,
+            weight: el.weight.metric,
             lifeSpan:el.life_span,
             img: el.image,
             created: false,

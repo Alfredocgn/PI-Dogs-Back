@@ -1,7 +1,10 @@
 .Detail{
     display: flex;
     justify-content: center;
-    flex-direction: row;
+    background-color: #008c9e;
+    padding-top: 100px;
+    align-self: center;
 
 
 }
+

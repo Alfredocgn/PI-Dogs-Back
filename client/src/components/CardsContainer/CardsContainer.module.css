@@ -1,5 +1,5 @@
 .container{
-    border: 1px solid black;
+
     display: flex;
     flex-direction: row;
     border-radius: 15px;
@@ -7,8 +7,6 @@
     gap: 1em;
     justify-content: space-around;
     padding: 1em;
+    background-color: #008c9e;
 }
 
-.Filters{
-    background-color: blue;
-}

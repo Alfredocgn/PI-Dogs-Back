@@ -1,5 +1,6 @@
 import React, {useEffect,useState} from "react";
 import { useSelector } from "react-redux";
+import style from "./Temperaments.module.css"
 
 export default function Temperaments({setForm}){
     const temperaments = useSelector((state)=>state.temperaments)
@@ -23,9 +24,9 @@ export default function Temperaments({setForm}){
                 return(
                     <li key={temperament.id}>
                         {temperament.name}
-                        {!actualTemps.includes(temperament.id) ? (<button type="button" onClick={()=> setActualTemps([...actualTemps,temperament.id])}>Add</button>) : null}
+                        {!actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps([...actualTemps,temperament.id])}>Add</button>) : null}
 
-                        {actualTemps.includes(temperament.id) ? (<button type="button" onClick={()=> setActualTemps(actualTemps.filter((tempt)=>tempt !== temperament.id))}>Remove
+                        {actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps(actualTemps.filter((tempt)=>tempt !== temperament.id))}>Remove
                         </button>) : null}
                     </li>
                 )

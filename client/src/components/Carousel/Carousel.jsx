@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import style from "./Carousel.module.css"
+import { Link } from "react-router-dom";
 
 
 
 export default function Carousel (autoPlay){
-    const images = ["Rona.jpeg","Dog-1.jpg","Dog-2.jpg"];
+    const images = ["Rona.jpeg","Dog-1.jpg","Dog-2.jpg","Ami.jpeg"];
     const [selectedIndex, setSelectedIndex] = useState(0);
     const[selectedImage,setSelectedImage]=useState(images[0]);
 
@@ -41,6 +42,10 @@ export default function Carousel (autoPlay){
     return(
     <>
     <div className={style.CarouselContainer}>
+    <div className={style.sider}>
+        <h1 className={style.HomeTitle}>Find your best friend with one click...</h1>
+        <Link className={style.HomeLink} to="/home">Home</Link> 
+    </div>
     <img src={require(`../../../public/img/${selectedImage}`).default} alt="Dogs" className={style.CarouselImg}/>
     </div>
     <div className={style.CarouselButtonContainer}>

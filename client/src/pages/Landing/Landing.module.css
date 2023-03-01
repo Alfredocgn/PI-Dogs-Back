@@ -1,24 +1,9 @@
-.HomeLink{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-}
+
 
 .LandingContainer{
     background-color: #008c9e;
     padding: 3em;
     border-radius: 15px;
     border: 1px solid gray;
-}
-
-.LandingTitle{
-    display: flex;
     justify-content: center;
-    align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
 }
