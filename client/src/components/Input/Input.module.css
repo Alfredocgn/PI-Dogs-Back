@@ -1,0 +1,14 @@
+
+.FormLabel{
+    width: 6em;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.InputContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.10em;
+    
+}

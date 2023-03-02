@@ -24,9 +24,9 @@ export default function Temperaments({setForm}){
                 return(
                     <li key={temperament.id}>
                         {temperament.name}
-                        {!actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps([...actualTemps,temperament.id])}>Add</button>) : null}
+                        {!actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps([...actualTemps,temperament.id])}>+</button>) : null}
 
-                        {actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps(actualTemps.filter((tempt)=>tempt !== temperament.id))}>Remove
+                        {actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps(actualTemps.filter((tempt)=>tempt !== temperament.id))}>-
                         </button>) : null}
                     </li>
                 )

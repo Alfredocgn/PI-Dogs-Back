@@ -76,7 +76,8 @@ const Form = ()=>{
                 value = {form.weight}
                 onChange = {changeHandler}
                 error={error.weight}
-                type="number"/>
+                type="number"
+                />
 
                 <Input
                 name="height"
@@ -84,7 +85,8 @@ const Form = ()=>{
                 value = {form.height}
                 onChange = {changeHandler}
                 error={error.height}
-                type="number"/>
+                type="number"
+                />
 
                 <Input
                 name="lifeSpan"
@@ -92,13 +94,14 @@ const Form = ()=>{
                 value = {form.lifeSpan}
                 onChange = {changeHandler}
                 error={error.lifeSpan}
-                type="number"/>
+                type="number"
+                />
 
                 <div>
-                    <label>Temperaments: </label>
+                    <label className={style.FormLabel}>Temperaments: </label>
                     <Temperaments setForm={setForm} />
                 </div>
-                <button type="submit">Create</button>
+                <button className={style.CreateButton} type="submit">Create</button>
 
             </form>
         </DefaultLayout>

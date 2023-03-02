@@ -14,9 +14,10 @@
 .paginationButton{
     display: block;
     padding: 0.5em 1em;
-    color: #fff;
-    background: #024959;
+    color: white;
+    background: #db6c11;
     text-decoration: none;
     cursor: pointer;
+    border: solid 1px white;
 
 }

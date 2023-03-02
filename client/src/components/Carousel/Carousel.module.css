@@ -1,15 +1,16 @@
 .CarouselImg{
-    width: 600px;
-    height: 600px;
-    border-radius: 15px;
+    width: 30em;
+    height: 30em;
+    border-radius: 1em;
     padding: 0;
     margin: 0;
+    flex: 1;
 }
 .CarouselButtonContainer{
     display: flex;
     align-content: center;
     flex-direction: row;
-    margin-top: 15px;
+    margin-top: 1em;
     justify-content: center;
 }
 
@@ -18,26 +19,27 @@
     background-color: #db6c11;
     padding: 0.5em;
     margin: 0 0.5em;
-    border: solid #404242;
+    border: 0.1em solid white;
+    cursor: pointer;
 
 }
 
 .CarouselContainer{
     display: flex;
     flex-direction: row;
-    border: solid 2px #404242;
+    border: solid 0.10em #404242;
     padding: 0;
     margin: 0;
-    width: 1200px;
-    border-radius: 15px;
+    width: auto;
+    border-radius: 1em;
     align-content: center;
     justify-content: center;
 }
 
 .sider{
-    width: 600px;
-    height: 600px;
-    border-radius: 15px;
+    width:30em;
+    height: 30em;
+    border-radius: 1em;
     background-color: #0597aa;
     padding: 0;
     margin: 0;
@@ -45,6 +47,8 @@
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
+    flex-direction: column;
+    flex: 1;
 
 }
 
