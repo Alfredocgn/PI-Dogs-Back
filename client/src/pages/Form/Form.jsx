@@ -1,5 +1,5 @@
 import {  useEffect, useState } from "react";
-import {  useDispatch, useSelector } from "react-redux";
+import {  useDispatch } from "react-redux";
 import DefaultLayout from "../../components/DefaultLayout/DefaultLayout";
 import { getTemperaments } from "../../redux/actions";
 import validate from "../../components/Validator/validate";

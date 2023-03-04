@@ -3,7 +3,7 @@
     flex-direction: row;
     justify-content: space-around;
     border: 2px solid white;
-    border-radius: 15px;
+    border-radius:0 0 15px 15px;
     height: auto;
     padding: 1em;
 

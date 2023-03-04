@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./SetPages.module.css"
 
-export default function SetPages ({dogsPerPage,dogs,paging}){
+export default function SetPages ({DOGS_PER_PAGE,filteredDogs,paging}){
     const pageNumbers = [];
 
-    for (let i = 1; i<= Math.ceil(dogs.length/dogsPerPage);i++){
+    for (let i = 1; i<= Math.ceil(filteredDogs.length/DOGS_PER_PAGE);i++){
         pageNumbers.push(i)
     }
     return(
