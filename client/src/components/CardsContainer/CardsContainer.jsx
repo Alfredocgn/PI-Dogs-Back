@@ -20,9 +20,8 @@ const CardsContainer = () =>{
             return dog.name.toLowerCase().startsWith(searchValue);
         }else if(filterType === "temperament"){
             return dog.temp && dog.temp.toLowerCase().includes(searchValue);
-        }else if(filterType === "createInDb") {
-            return Object.hasOwn(dog,"createInDb")
-        }
+        }else {return Object.hasOwn(dog,"createInDb")}
+        
     });
 
     //SORTING
@@ -62,26 +61,34 @@ const CardsContainer = () =>{
     
 
     return (
-        <>
-        <SearchBar 
-        placeholder="Enter a temperament..." 
-        setSearchValue={setSearchValue}
-        value = {searchValue}
-        filterType ={filterType}
+        <>{filterType === "createInDb" ? null : (<SearchBar 
+            placeholder="Enter a value..." 
+            setSearchValue={setSearchValue}
+            value = {searchValue}
+            filterType ={filterType}
+            setCurrentPage={setCurrentPage}
+            />)}
+
+        <Filters 
+        setSortingType={setSortingType} 
+        setFilterType={setFilterType}
+        sortingType={sortingType}
         />
-        <Filters setSortingType={setSortingType} setFilterType={setFilterType}/>
         <SetPages       
         dogsPerPage = {DOGS_PER_PAGE}
         filteredDogs = {filteredDogs}
-        paging = {paging}/>
+        paging = {paging}
+        currentPage={currentPage}
+        />
 
             <div className={style.container}>
                 {currentDogs.map(dog => {
-                    return (<Card
+                    return (
+                    <Card
                         key ={dog.id}
                         name={dog.name}
                         weight={dog.weight}
-                        temperament={dog.temp}
+                        temperament={dog.temp || dog.temperaments}
                         height={dog.height}
                         id ={dog.id}
                         img={dog.img ? dog.img.url : "No image"}

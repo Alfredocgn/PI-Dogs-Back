@@ -24,7 +24,12 @@ const cleanDogsApi =  (arr) =>{
 
 
 const createDog = async (name,height,weight,lifeSpan,temperaments) =>{
-    const newDog = await Dog.create({name,height,weight,lifeSpan,temperaments})
+    const newDog = await Dog.create({
+        name,
+        height,
+        weight,
+        lifeSpan,
+        temperaments})
     // return newDog;
 
     const filteredDog = await newDog.addTemperament(temperaments)
@@ -53,7 +58,11 @@ const getDogbyRaceId = async (id,source)=>{
 
 
 const getAllDogs = async () =>{
-    const dbDogs = await Dog.findAll();
+    const dbDogs = await Dog.findAll({
+        include:{
+            model: Temperament,
+        }
+    });
     const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)).data;
 
 
@@ -69,28 +78,5 @@ const getAllDogs = async () =>{
     return results
 }
 
-const searchDogByName = async (name) => {
-    const dbDogs = await Dog.findAll({
-        where:{
-            name:name
-        }
-    })
 
-    const apiDogsRaw = (await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${YOUR_API_KEY}`)).data;
-const apiDogs = cleanDogsApi(apiDogsRaw)
-
-
-    const filteredDogs = apiDogs.filter(dog => dog.name === name)
-    result = [...filteredDogs,...dbDogs]
-    if(result.length === 0){
-        throw new Error ("El perro buscado no existe")
-    }
-
-    return[...filteredDogs,...dbDogs]
-
-
-
-}
-
-
-module.exports = {createDog, getDogbyRaceId,getAllDogs,searchDogByName}    
+module.exports = {createDog, getDogbyRaceId,getAllDogs}    

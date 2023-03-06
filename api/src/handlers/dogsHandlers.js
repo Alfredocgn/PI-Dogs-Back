@@ -1,4 +1,4 @@
-const {createDog,getDogbyRaceId,searchDogByName,getAllDogs} = require('../controllers/dogsController');
+const {createDog,getDogbyRaceId,getAllDogs} = require('../controllers/dogsController');
 
 
 const getDogsHandler = async (req,res)=>{

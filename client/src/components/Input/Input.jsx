@@ -5,7 +5,12 @@ export default function Input({label,name,error,value,onChange,type}){
     return(
         <div className={style.InputContainer}>
             <label className={style.FormLabel}>{label}</label>
-            <input type={type} value={value} onChange ={onChange} name={name}/>
+            <input 
+            type={type} 
+            value={value} 
+            onChange ={onChange} 
+            name={name}
+            />
             {error && <span>{error}</span>}
         </div>
     )

@@ -1,8 +1,10 @@
 import React, {useEffect,useState} from "react";
 import { useSelector } from "react-redux";
 import style from "./Temperaments.module.css"
+import {AiFillDelete} from "react-icons/ai"
+import {IoIosAddCircle} from "react-icons/io"
 
-export default function Temperaments({setForm}){
+export default function Temperaments({setForm,setError}){
     const temperaments = useSelector((state)=>state.temperaments)
     const [actualTemps,setActualTemps]= useState([]);
     
@@ -13,20 +15,40 @@ export default function Temperaments({setForm}){
             temperaments: actualTemps,
         }))
     },[actualTemps,setForm])
+
+    useEffect(()=>{
+        if(actualTemps.length === 0){
+            setError((prevErrors)=>({
+                ...prevErrors,
+                temperaments: "You need to choose at least 1",
+            }));
+        }else {
+            setError((prevErrors)=>({
+                prevErrors,
+                temperaments:undefined,
+            }))
+        }
+    }, [actualTemps,setError])
     
     return(
-        <ul style={{
-            overflowY : "scroll",
-            maxHeight:"150px",
-            listStyle:"none"
-        }}>
+        <ul className={style.TemperamentList}>
             {temperaments.map((temperament)=>{
                 return(
-                    <li key={temperament.id}>
+                    <li key={temperament.id} className={style.temperamentItem}>
                         {temperament.name}
-                        {!actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps([...actualTemps,temperament.id])}>+</button>) : null}
+                        {!actualTemps.includes(temperament.id) ? 
+                        (<button 
+                        className={style.TemperamentButton} 
+                        type="button" 
+                        onClick={()=> setActualTemps([...actualTemps,temperament.id])}> <IoIosAddCircle className={style.TemperamentIcon} /></button>) : null}
 
-                        {actualTemps.includes(temperament.id) ? (<button className={style.TempButton} type="button" onClick={()=> setActualTemps(actualTemps.filter((tempt)=>tempt !== temperament.id))}>-
+                        {actualTemps.includes(temperament.id) ? 
+                        (<button 
+                        className={style.TemperamentButton} 
+                        type="button" 
+                        onClick={()=> 
+                        setActualTemps(actualTemps.filter((tempt)=>tempt !== temperament.id))}>
+                            <AiFillDelete className={style.TemperamentIcon} />
                         </button>) : null}
                     </li>
                 )

@@ -25,10 +25,10 @@ const Detail = ()=>{
                         key={dog.id}
                         name={dog.name}
                         weight ={dog.weight}
-                        temperament = {dog.temperament}
+                        temperament = {dog.temperament || dog.temperaments}
                         height = {dog.height}
                         id = {dog.id}
-                        lifeSpan = {dog.life_span}
+                        lifeSpan = {dog.life_span ||dog.lifeSpan}
                         img={`https://cdn2.thedogapi.com/images/${dog.reference_image_id}.jpg`}
                         
                         />               

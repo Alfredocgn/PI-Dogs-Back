@@ -1,26 +1,22 @@
-.Form{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.Form {
+    display: grid;
+    place-items: center;
     font-family: Arial, Helvetica, sans-serif;
     color: white;
     margin: auto;
     padding: 1em;
-    width: 100vh;
-    
-
-
+    height: 10vh;
 }
-
-.FormLabel{
-    width: 6em;
-    font-weight: bold;
-    display: inline-block;
-    padding: 0.5em;
+.FormContainer {
+    max-width: 50%;
+    width: 100%;
 }
-
-.CreateButton{
+.FormController {
+    display: flex;
+    gap: 1rem;
+}
+.CreateButton {
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,9 +25,10 @@
     text-decoration: none;
     color: white;
     font-weight: bold;
-    height: 2em;
-    width: 10em;
+    width: 100%;
     border: solid 1px;
     background-color: #db6c11;
     cursor: pointer;
+    padding: 1rem 0;
+    font-size: 1.25rem;
 }

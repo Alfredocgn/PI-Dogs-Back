@@ -3,24 +3,13 @@ import style from "./Filters.module.css"
 
 
 
-const  Filters = ({setSortingType,setFilterType}) =>{
+const  Filters = ({setSortingType,setFilterType,sortingType}) =>{
+
 
 
     const handleOnChange = (e) =>{
-        console.log(e.target.checked)
-        console.log(e.target.name)
-        console.log(e.target.value)
-        if(e.target.checked && e.target.value === "aToZ"){
-        return setSortingType("nameAscendant")
-        }else if(e.target.checked && e.target.value === "zToA"){
-            return setSortingType("nameDescendant")
-        }else if (e.target.checked && e.target.value === "minWeight"){
-            return setSortingType("weightAscendant")
 
-        }else if (e.target.checked && e.target.value === "maxWeight") {
-            return setSortingType("weightDescendant")
-        }
-        
+        setSortingType(e.target.value)        
     }
 
     const handleOnChangeSearchBar = (e)=>{
@@ -39,14 +28,36 @@ const  Filters = ({setSortingType,setFilterType}) =>{
 
     return(
         <div className={style.filters}>
-            <input type="radio" name="sort" onChange={handleOnChange} value={"aToZ"} />
+            <input 
+            type="radio" 
+            name="sort" 
+            onChange={handleOnChange} 
+            value={"nameAscendant"}
+            checked = {sortingType === "nameAscendant" && true} />
             <label htmlFor="AlphaneticalCheckBox">Alphabetical Order A-Z</label>
-            <input type="radio" name="sort" value={"zToA"} onChange={handleOnChange}/>
+            <input 
+            type="radio" 
+            name="sort" 
+            value={"nameDescendant"} 
+            onChange={handleOnChange}
+            />
             <label htmlFor="AlphaneticalCheckBox">Alphabetical Order Z-A</label>
-            <input type="radio" name="sort" value={"minWeight"} onChange={handleOnChange}/>
+            <input 
+            type="radio" 
+            name="sort" 
+            value={"weightAscendant"} 
+            onChange={handleOnChange}
+            />
             <label htmlFor="WeightCheckBox">Order by Weight Min to Max </label>
-            <input type="radio" name="sort" value={"maxWeight"} onChange={handleOnChange}/>
+            <input 
+            type="radio" 
+            name="sort" 
+            value={"weightDescendant"} 
+            onChange={handleOnChange}
+            />
             <label htmlFor="WeightCheckBox">Order by Weight Max to Min</label>
+
+            
             <input type="radio" name="search" value="Name" onChange={handleOnChangeSearchBar}/>
             <label htmlFor="Searchbar">Name</label>
             <input type="radio" name="search" value="Temperament" onChange={handleOnChangeSearchBar}/>

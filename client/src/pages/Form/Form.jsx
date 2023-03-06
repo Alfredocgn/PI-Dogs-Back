@@ -18,23 +18,31 @@ const Form = ()=>{
         dispatch(getTemperaments());
     },[dispatch])
 
-    
+    const [successSubmit,setSuccessSubmit]=useState(false);
 
 
 
     const [form,setForm] = useState({
-        name:"",
-        height:"",
-        weight:"",
-        lifeSpan:"",
-        temperaments:""
+        name: undefined,
+        minHeight: undefined,
+        maxHeight: undefined,
+        minWeight: undefined,
+        maxWeight: undefined,
+        minLifeSpan: undefined,
+        maxLifeSpan: undefined,
+        temperaments: [],
+
     })
 
     const [error,setError] = useState({
-        name:"",
-        height:"",
-        weight:"",
-        lifeSpan:"",
+        name: undefined,
+        minHeight: undefined,
+        maxHeight: undefined,
+        minWeight: undefined,
+        maxWeight: undefined,
+        minLifeSpan: undefined,
+        maxLifeSpan: undefined,
+        temperaments: undefined,
 
     })
 
@@ -43,7 +51,7 @@ const Form = ()=>{
         const value = e.target.value;
 
 
-        validate({...form,[prop]:value},error,setError);
+        validate({[prop]:value},error,setError,form);
         setForm({...form,[prop]:value});
 
 
@@ -53,58 +61,109 @@ const Form = ()=>{
 
     const submitHandler= ((e) => {
         e.preventDefault()
-        axios
-        .post("http://localhost:3001/dogs",form)
-        .then(res=>alert(res))
-        .catch(err=>alert(err))
+        if(Object.values(error).every((el)=>el=== undefined)){
+            const formData = {
+                name:form.name,
+                height: `${form.minHeight} - ${form.maxHeight}`,
+                weight: `${form.minWeight} - ${form.maxWeight}`,
+                lifeSpan: `${form.minLifeSpan} - ${form.maxLifeSpan}`,
+                temperaments: form.temperaments,
+
+            };
+            axios
+            .post("http://localhost:3001/dogs",form)
+            .then(res=>alert(res))
+            .catch(err=>alert(err))
+        }else {
+            alert("Can't Submit");
+        }
     })
 
     return (
-        <DefaultLayout>
-            <form className={style.Form} onSubmit={submitHandler}>
-                <Input
-                name="name"
-                label="Name: "
-                value = {form.name}
-                onChange = {changeHandler}
-                error={error.name}
-                type="text"/>
-
-                <Input
-                name="weight"
-                label="Weight: "
-                value = {form.weight}
-                onChange = {changeHandler}
-                error={error.weight}
-                type="number"
-                />
-
-                <Input
-                name="height"
-                label="Height: "
-                value = {form.height}
-                onChange = {changeHandler}
-                error={error.height}
-                type="number"
-                />
-
-                <Input
-                name="lifeSpan"
-                label="LifeSpan: "
-                value = {form.lifeSpan}
-                onChange = {changeHandler}
-                error={error.lifeSpan}
-                type="number"
-                />
-
-                <div>
+            <DefaultLayout>
+            <div className={style.Form}>
+            <div className={style.FormContainer}>
+                {successSubmit ? (
+                <p>Exito</p>
+                ) : (
+                <form onSubmit={submitHandler}>
+                    <Input
+                    name="name"
+                    label="Name: "
+                    value={form.name}
+                    onChange={changeHandler}
+                    error={error.name}
+                    type="text"
+                    />
+                    <div className={style.FormController}>
+                    <Input
+                        name="minWeight"
+                        label="Min weight: "
+                        value={form.minWeight}
+                        onChange={changeHandler}
+                        error={error.minWeight}
+                        type="number"
+                    />
+                    <Input
+                        name="maxWeight"
+                        label="Max weight: "
+                        value={form.maxWeight}
+                        onChange={changeHandler}
+                        error={error.maxWeight}
+                        type="number"
+                    />
+                    </div>
+                    <div className={style.FormController}>
+                    <Input
+                        name="minHeight"
+                        label="Min height: "
+                        value={form.minHeight}
+                        onChange={changeHandler}
+                        error={error.minHeight}
+                        type="number"
+                    />
+                    <Input
+                        name="maxHeight"
+                        label="Max height: "
+                        value={form.maxHeight}
+                        onChange={changeHandler}
+                        error={error.maxHeight}
+                        type="number"
+                    />
+                    </div>
+                    <div className={style.FormController}>
+                    <Input
+                        name="minLifeSpan"
+                        label="Min lifeSpan: "
+                        value={form.minLifeSpan}
+                        onChange={changeHandler}
+                        error={error.minLifeSpan}
+                        type="number"
+                    />
+                    <Input
+                        name="maxLifeSpan"
+                        label="Max lifeSpan: "
+                        value={form.maxLifeSpan}
+                        onChange={changeHandler}
+                        error={error.maxLifeSpan}
+                        type="number"
+                    />
+                    </div>
+    
+                    <div>
                     <label className={style.FormLabel}>Temperaments: </label>
-                    <Temperaments setForm={setForm} />
-                </div>
-                <button className={style.CreateButton} type="submit">Create</button>
-
-            </form>
+                    <Temperaments setForm={setForm} setError={setError} />
+                    {error && <span>{error.temperaments}</span>}
+                    </div>
+                    <button className={style.CreateButton} type="submit">
+                    Create
+                    </button>
+                </form>
+                )}
+            </div>
+            </div>
         </DefaultLayout>
+
         
     )
 }

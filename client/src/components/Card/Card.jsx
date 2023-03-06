@@ -8,7 +8,9 @@ const Card = ({img,name,weight,temperament,id})=>{
             <div className={style.card}>
                 <p className={style.cardInfo}>Name: {name}</p>                
                 <p className={style.cardInfo}>Weight: {weight} Kg</p>
-                <p className={style.cardInfo}>Temperament: {temperament}</p>
+                <p className={style.cardInfo}>Temperament: {" "}{Array.isArray(temperament) ? temperament.reduce((prev,temp)=>{
+                    return `${prev} ${temp.name},`;
+                }, ""): temperament}</p>
                 <img src={img} alt="imgDog" className={style.cardImage} />
             </div>
         </Link>

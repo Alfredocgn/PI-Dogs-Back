@@ -1,14 +1,25 @@
 
 .FormLabel{
-    width: 6em;
     font-weight: bold;
-    display: inline-block;
+    margin-bottom: 0.5rem;
+
 }
 
 .InputContainer{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     padding: 0.10em;
+    width: 100%;
+    margin-bottom: 1rem;
     
+}
+
+.Input{
+    padding: 0.5rem 0.25rem;
+    border: 1.5px solid grey;
+    font-size: 1rem;
+}
+
+.Input:focus{
+    border: 3px solid #008c9e;
 }
