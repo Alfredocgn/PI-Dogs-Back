@@ -17,9 +17,8 @@ const  Filters = ({setSortingType,setFilterType,sortingType}) =>{
         {return setFilterType("name")}
         else if(e.target.checked && e.target.value === "Temperament"){
             return setFilterType("temperament")
-        }else if(e.target.checked && e.target.value === "dbDogs"){
-            return setFilterType("createInDb")
-        }
+        }else return setFilterType("createInDb")
+        
     }
 
 

@@ -70,7 +70,6 @@ const CardsContainer = () =>{
             setCurrentPage={setCurrentPage}
             />)}
 
-
         <Filters 
         setSortingType={setSortingType} 
         setFilterType={setFilterType}
@@ -95,6 +94,7 @@ const CardsContainer = () =>{
                         height={dog.height}
                         id ={dog.id}
                         img={dog.img ? dog.img.url : "No image"}
+                        
                     />);
                 })}
             </div>

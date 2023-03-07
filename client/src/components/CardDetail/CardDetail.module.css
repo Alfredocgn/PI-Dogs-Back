@@ -16,6 +16,7 @@
     width: 10em;
     display: flex;
     align-self: center;
+    border: 1px solid #404242;
 }
 
 

@@ -88,7 +88,7 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
                 <div className={style.FormController}>
                     <Input
                     name="minWeight"
-                    label="Min weight: "
+                    label="Min weight (kg): "
                     value= {form.minWeight}
                     onChange={changeHandler}
                     error={error.minWeight}
@@ -96,7 +96,7 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
                     />
                     <Input
                     name="maxWeight"
-                    label="Max weight: "
+                    label="Max weight (kg): "
                     value= {form.maxWeight}
                     onChange={changeHandler}
                     error={error.maxWeight}
@@ -106,7 +106,7 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
                 <div className={style.FormController}>
                     <Input
                     name="minHeight"
-                    label="Min height: "
+                    label="Min height (cm): "
                     value={form.minHeight}
                     onChange={changeHandler}
                     error={error.minHeight}
@@ -114,7 +114,7 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
                     />
                     <Input
                     name="maxHeight"
-                    label="Max height: "
+                    label="Max height (cm): "
                     value={form.maxHeight}
                     onChange={changeHandler}
                     error={error.maxHeight}
@@ -124,7 +124,7 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
                 <div className={style.FormController}>
                     <Input
                     name="minLifeSpan"
-                    label="Min lifeSpan: "
+                    label="Min lifeSpan (years): "
                     value={form.minLifeSpan}
                     onChange={changeHandler}
                     error={error.minLifeSpan}
@@ -132,7 +132,7 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
                     />
                     <Input
                     name="maxLifeSpan"
-                    label="Max lifeSpan: "
+                    label="Max lifeSpan (years): "
                     value={form.maxLifeSpan}
                     onChange={changeHandler}
                     error={error.maxLifeSpan}

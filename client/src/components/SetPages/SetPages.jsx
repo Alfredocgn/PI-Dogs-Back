@@ -16,22 +16,23 @@ export default function SetPages ({
         <nav className={style.pagination}>
 
             <ul className={style.paginationUl}>
-            <button className={style.paginationButtonA} onClick ={()=> paging(currentPage === 1 ? 1 : currentPage - 1)}>{"< "}</button> 
-                {pageNumbers.map(number =>{
-                    return(
-                    <li className={style.paginationList} key={number}>
-                                            
-                        <button className={style.paginationButton} onClick={()=> paging(number)}
-                        style={{backgroundColor: currentPage === number && "green",
-                        }}
-                        >
-                            {number}
-                        </button>
-                        
-                    </li>)
+                <button className={style.paginationFBButton} onClick={()=> paging(currentPage !== 1 ? 1 : currentPage)}>{"<<"}</button>
+                <button className={style.paginationFBButton} onClick ={()=> paging(currentPage === 1 ? 1 : currentPage - 1)}>{"<"}</button> 
+                    {pageNumbers.map(number =>{
+                        return(
+                        <li className={style.paginationList} key={number}>
+                            <button className={style.paginationButton} onClick={()=> paging(number)}
+                            style={{backgroundColor: currentPage === number && "green",
+                            }}
+                            >
+                                {number}
+                            </button>
+                            
+                        </li>)
 
                 })}
-                <button className={style.paginationButton} onClick ={()=> paging(currentPage === pageNumbers.length ? pageNumbers.length : currentPage+ 1)}>{">"}</button> 
+                <button className={style.paginationFBButton} onClick ={()=> paging(currentPage === pageNumbers.length ? pageNumbers.length : currentPage+ 1)}>{">"}</button> 
+                <button className={style.paginationFBButton} onClick={()=> paging(currentPage !== pageNumbers.length ? pageNumbers.length : currentPage)}>{">>"}</button>
             </ul>
         </nav>
     )

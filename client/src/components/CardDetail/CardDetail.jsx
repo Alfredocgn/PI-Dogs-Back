@@ -1,4 +1,4 @@
-
+import dogUp from '../../public/img/DogUp.jpeg'
 import style from "./CardDetail.module.css"
 
 
@@ -13,7 +13,8 @@ const CardDetail = ({name,img,temperament,height,weight,lifeSpan}) =>{
                 return `${prev} ${temp.name},`;
             }, "") : temperament}
             </p>
-            <img src={img ? img : "../../../public/img/DogUp.jpeg"} alt="imgDogDetail" className={style.CardDetailImage}/>      
+            <img src={img.includes("undefined") ? dogUp : img } alt="imgDogDetail" className={style.CardDetailImage}/>
+            {console.log(img)}      
         </div>
 
     )
