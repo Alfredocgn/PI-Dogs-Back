@@ -1,5 +1,19 @@
-.filters{
+.Filters{
     display: flex;
 
     justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+.FiltersLabel{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    font-weight: bold;
+    padding-left: 0.5rem;
+}
+
+.RadioButtonContainer{
+    padding: 0.5rem;
 }

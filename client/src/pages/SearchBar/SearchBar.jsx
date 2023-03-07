@@ -17,8 +17,8 @@ const SearchBar = ({
             <input 
             type="text" 
             placeholder={placeholder} 
-            onChange={(e)=>{
-            setSearchValue(e.target.value.toLowerCase())
+            onChange={(e)=> {
+            setSearchValue(e.target.value.toLowerCase());
             setCurrentPage(1)}} />
             <button onClick={()=>setSearchValue("")}>Clear</button>
 

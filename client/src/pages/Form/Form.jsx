@@ -38,7 +38,7 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
         maxWeight: undefined,
         minLifeSpan: undefined,
         maxLifeSpan: undefined,
-        temperaments: undefined,
+        temperaments: "",
     });
 
     const changeHandler = (e) => {
@@ -63,9 +63,9 @@ import SuccesCard from "../../components/SuccessCard/SuccesCard";
         axios
             .post("http://localhost:3001/dogs", formData)
             .then(() => setSuccessSubmit(true))
-            .catch((err) => alert(err));
+            .catch((err) => alert("This name already exist"));
         } else {
-        alert("can't submit");
+        alert("All fields are required");
         }
     };
 
