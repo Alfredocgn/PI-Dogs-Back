@@ -7,4 +7,6 @@
     border: 1px solid gray;
     justify-content: center;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

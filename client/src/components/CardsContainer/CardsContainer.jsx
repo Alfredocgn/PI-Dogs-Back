@@ -61,6 +61,7 @@ const CardsContainer = () =>{
     
 
     return (
+        
         <>{filterType === "createInDb" ? null : (<SearchBar 
             placeholder="Enter a value..." 
             setSearchValue={setSearchValue}
@@ -68,6 +69,7 @@ const CardsContainer = () =>{
             filterType ={filterType}
             setCurrentPage={setCurrentPage}
             />)}
+
 
         <Filters 
         setSortingType={setSortingType} 
@@ -79,6 +81,7 @@ const CardsContainer = () =>{
         filteredDogs = {filteredDogs}
         paging = {paging}
         currentPage={currentPage}
+
         />
 
             <div className={style.container}>

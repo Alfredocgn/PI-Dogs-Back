@@ -10,6 +10,7 @@ export default function Input({label,name,error,value,onChange,type}){
             value={value} 
             onChange ={onChange} 
             name={name}
+            className={style.Input}
             />
             {error && <span>{error}</span>}
         </div>

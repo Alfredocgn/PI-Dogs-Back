@@ -13,10 +13,11 @@ const CardDetail = ({name,img,temperament,height,weight,lifeSpan}) =>{
                 return `${prev} ${temp.name},`;
             }, "") : temperament}
             </p>
-            <img src={img} alt="imgDogDetail" className={style.CardDetailImage}/>      
+            <img src={img ? img : "../../../public/img/DogUp.jpeg"} alt="imgDogDetail" className={style.CardDetailImage}/>      
         </div>
 
     )
 }
+
 
 export default CardDetail;

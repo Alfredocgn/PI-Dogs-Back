@@ -5,6 +5,8 @@
     padding: 0;
     margin: 0;
     flex: 1;
+    object-fit: contain;
+    background-color: #616464;
 }
 .CarouselButtonContainer{
     display: flex;
@@ -32,7 +34,6 @@
     margin: 0;
     width: auto;
     border-radius: 1em;
-    align-content: center;
     justify-content: center;
 }
 

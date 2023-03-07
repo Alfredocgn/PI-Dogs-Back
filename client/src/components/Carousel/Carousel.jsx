@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 
 export default function Carousel (autoPlay){
-    const images = ["Rona.jpeg","Dog-1.jpg","Dog-2.jpg","Ami.jpeg"];
+    const images = ["Rona.jpeg","Dog-1.jpg","Dog-2.jpg","Ami.jpeg","Otto2.jpeg"];
     const [selectedIndex, setSelectedIndex] = useState(0);
     const[selectedImage,setSelectedImage]=useState(images[0]);
 

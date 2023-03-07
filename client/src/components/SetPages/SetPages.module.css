@@ -4,20 +4,40 @@
 .paginationUl{
     list-style: none;
     text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .paginationList{
     display: inline-block;
     margin-right: 0.5em;
+
 }
 
 .paginationButton{
     display: block;
-    padding: 0.5em 1em;
+    padding: 0.5em 1em 0.5em 1em;
     color: white;
     background: #db6c11;
     text-decoration: none;
     cursor: pointer;
     border: solid 1px white;
 
+
 }
+
+.paginationButtonA{
+    display: block;
+    padding: 0.5em 1em 0.5em 1em;
+    color: white;
+    background: #db6c11;
+    text-decoration: none;
+    cursor: pointer;
+    border: solid 1px white;
+    margin-right: 0.5em;
+
+
+}
+
+
+

@@ -28,6 +28,7 @@ const  Filters = ({setSortingType,setFilterType,sortingType}) =>{
 
     return(
         <div className={style.filters}>
+
             <input 
             type="radio" 
             name="sort" 
@@ -57,6 +58,7 @@ const  Filters = ({setSortingType,setFilterType,sortingType}) =>{
             />
             <label htmlFor="WeightCheckBox">Order by Weight Max to Min</label>
 
+            
             
             <input type="radio" name="search" value="Name" onChange={handleOnChangeSearchBar}/>
             <label htmlFor="Searchbar">Name</label>
