@@ -16,8 +16,7 @@ const cleanDogsApi =  (arr) =>{
             img: el.image,
             created: false,
             temp: el.temperament
-
-        }
+    }
     })
     
 }
